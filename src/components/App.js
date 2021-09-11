@@ -1,13 +1,14 @@
 import "../styles/App.css";
 import { Layout } from "./Layout";
-import { Signup } from "./pages/Signup";
+import { Login } from "./pages/Login";
 
 function App() {
   return (
     <div className="App">
       <Layout>
         {/* <Home /> */}
-        <Signup />
+        {/* <Signup /> */}
+        <Login />
       </Layout>
     </div>
   );
