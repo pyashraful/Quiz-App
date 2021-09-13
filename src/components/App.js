@@ -1,4 +1,6 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { PrivateRoute } from "../components/PrivateRoute";
+import { PublicRoute } from "../components/PublicRoute";
 import { AuthProvider } from "../contexts/authContext";
 import "../styles/App.css";
 import { Layout } from "./Layout";
@@ -15,10 +17,10 @@ function App() {
         <Layout>
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/signup" component={Signup} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/quiz" component={Quiz} />
-            <Route exact path="/result" component={Result} />
+            <PublicRoute exact path="/signup" component={Signup} />
+            <PublicRoute exact path="/login" component={Login} />
+            <PrivateRoute exact path="/quiz" component={Quiz} />
+            <PrivateRoute exact path="/result" component={Result} />
           </Switch>
         </Layout>
       </AuthProvider>
