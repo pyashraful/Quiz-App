@@ -22,7 +22,7 @@ export const SignupForm = () => {
     event.preventDefault();
 
     if (password !== confirmPassword) {
-      setError("password do not match");
+      return setError("password do not match");
     }
     try {
       setError("");
@@ -81,7 +81,7 @@ export const SignupForm = () => {
         {" "}
         <span>Submit now</span>{" "}
       </Button>
-      <p className="error"> {error} </p>
+      {error && <p className="error"> {error} </p>}
       <div className="info">
         Already have an account? <Link to="/Login">Login</Link> instead.
       </div>

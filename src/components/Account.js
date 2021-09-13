@@ -4,7 +4,8 @@ import { useAuth } from "../contexts/authContext";
 import classes from "../styles/Account.module.css";
 
 export const Account = () => {
-  const { currentUser } = useAuth();
+  const { currentUser, logout } = useAuth();
+
   return (
     <div className={classes.account}>
       {currentUser ? (
@@ -13,7 +14,11 @@ export const Account = () => {
             account_circle
           </span>
           <span>{currentUser.displayName}</span>
-          <span class="material-icons-outlined" title="Logout">
+          <span
+            className="material-icons-outlined"
+            title="Logout"
+            onClick={logout}
+          >
             {" "}
             logout{" "}
           </span>
