@@ -21,10 +21,10 @@ function reducer(state, action) {
 
     case "answer":
       const questions = _.cloneDeep(state);
-      questions[action.question].options[action.optionIndex].checked =
+      questions[action.questionId].options[action.optionIndex].checked =
         action.value;
 
-      return action.value;
+      return questions;
     default:
       throw new Error(`wrong action type ${action.type}`);
   }
@@ -43,8 +43,13 @@ export const Quiz = () => {
     });
   }, [questions]);
 
-  function handleAnswerChange() {
-    // will do something
+  function handleAnswerChange(e, index) {
+    dispatch({
+      type: "answer",
+      questionsId: currentQuestion,
+      optionIndex: index,
+      value: e.target.checked,
+    });
   }
 
   return (
@@ -52,7 +57,7 @@ export const Quiz = () => {
       <h1>{qna.title}</h1>
       <h4>Question can have multiple answers</h4>
       <Answeres
-        option={qna[currentQuestion].options}
+        options={qna[currentQuestion].options}
         handleChange={handleAnswerChange}
       />
       <ProgressBar />
