@@ -16,11 +16,19 @@ export const Videos = () => {
           hasMore={hasMore}
           next={() => setPage(page + 8)}
         >
-          {videos.map((video) => (
-            <Link to={"/quiz"} key={video.youtubeID}>
+          {videos.map((video) =>
+            video.noq > 0 ? (
+              <Link to={"/quiz"} key={video.youtubeID}>
+                <Video
+                  title={video.titel}
+                  id={video.youtubeID}
+                  noq={video.noq}
+                />
+              </Link>
+            ) : (
               <Video title={video.titel} id={video.youtubeID} noq={video.noq} />
-            </Link>
-          ))}
+            )
+          )}
         </InfiniteScroll>
       )}
       {!loading && videos.length === 0 && <p>no data found</p>}
