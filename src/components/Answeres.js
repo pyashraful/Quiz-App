@@ -2,7 +2,8 @@ import React from "react";
 import classes from "../styles/Answeres.module.css";
 import { Checkbox } from "./Checkbox";
 
-export const Answeres = ({ options, handleChange }) => {
+export const Answeres = ({ options = [], handleChange }) => {
+  console.log(options);
   return (
     <div className={classes.answers}>
       {options.map((option, index) => (

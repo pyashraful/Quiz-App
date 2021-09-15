@@ -53,6 +53,25 @@ export const Quiz = () => {
     });
   }
 
+  function nextQuestion() {
+    console.log("invok");
+    console.log(currentQuestion);
+    console.log(questions.length);
+    if (currentQuestion + 1 < questions.length) {
+      setCurrentQuestion((prevCurrent) => prevCurrent + 1);
+      console.log(currentQuestion);
+    }
+  }
+
+  function prevQuestions() {
+    if (currentQuestion >= 1 && currentQuestion <= currentQuestion.length) {
+      setCurrentQuestion((prevCurrent) => prevCurrent - 1);
+    }
+  }
+
+  const percentage =
+    currentQuestion > 0 ? ((currentQuestion + 1) / questions.length) * 100 : 0;
+
   console.log(qna);
   return (
     <>
@@ -62,11 +81,16 @@ export const Quiz = () => {
         <>
           <h1>{qna[currentQuestion].title}</h1>
           <h4>Question can have multiple answers</h4>
+          {console.log(qna[currentQuestion].options)}
           <Answeres
             options={qna[currentQuestion].options}
             handleChange={handleAnswerChange}
           />
-          <ProgressBar />
+          <ProgressBar
+            progress={percentage}
+            next={nextQuestion}
+            prev={prevQuestions}
+          />
           <MiniPlayer />
         </>
       )}

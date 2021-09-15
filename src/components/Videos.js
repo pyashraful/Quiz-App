@@ -26,7 +26,12 @@ export const Videos = () => {
                 />
               </Link>
             ) : (
-              <Video title={video.titel} id={video.youtubeID} noq={video.noq} />
+              <Video
+                key={video.youtubeID}
+                title={video.titel}
+                id={video.youtubeID}
+                noq={video.noq}
+              />
             )
           )}
         </InfiniteScroll>
