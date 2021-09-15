@@ -33,12 +33,13 @@ function reducer(state, action) {
 export const Quiz = () => {
   const { id } = useParams();
   const { questions, error, loading } = useQuestions(id);
-  const [currentQuestion, setCurrentQuestion] = useState();
+  const [currentQuestion, setCurrentQuestion] = useState(0);
 
   const [qna, dispatch] = useReducer(reducer, initialState);
+
   useEffect(() => {
     dispatch({
-      type: "quistions",
+      type: "questions",
       value: questions,
     });
   }, [questions]);
@@ -46,22 +47,29 @@ export const Quiz = () => {
   function handleAnswerChange(e, index) {
     dispatch({
       type: "answer",
-      questionsId: currentQuestion,
+      questionId: currentQuestion,
       optionIndex: index,
       value: e.target.checked,
     });
   }
 
+  console.log(qna);
   return (
     <>
-      <h1>{qna.title}</h1>
-      <h4>Question can have multiple answers</h4>
-      <Answeres
-        options={qna[currentQuestion].options}
-        handleChange={handleAnswerChange}
-      />
-      <ProgressBar />
-      <MiniPlayer />
+      {loading && <div>loading...</div>}
+      {error && <div>loading...</div>}
+      {!loading && !error && qna && qna.length > 0 && (
+        <>
+          <h1>{qna[currentQuestion].title}</h1>
+          <h4>Question can have multiple answers</h4>
+          <Answeres
+            options={qna[currentQuestion].options}
+            handleChange={handleAnswerChange}
+          />
+          <ProgressBar />
+          <MiniPlayer />
+        </>
+      )}
     </>
   );
 };
