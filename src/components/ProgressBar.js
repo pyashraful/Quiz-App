@@ -2,7 +2,7 @@ import React from "react";
 import classes from "../styles/ProgressBar.module.css";
 import { Button } from "./Button";
 
-export const ProgressBar = ({ progress, next, prev }) => {
+export const ProgressBar = ({ progress, submit, next, prev }) => {
   return (
     <div className={classes.progressBar}>
       <div onClick={prev} className={classes.backButton}>
@@ -18,7 +18,10 @@ export const ProgressBar = ({ progress, next, prev }) => {
         </div>
       </div>
 
-      <Button onClick={next} className={classes.next}>
+      <Button
+        onClick={progress === 100 ? submit : next}
+        className={classes.next}
+      >
         <span>Next Question</span>
         <span className="material-icons-outlined"> arrow_forward </span>
       </Button>
