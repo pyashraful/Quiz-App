@@ -113,7 +113,7 @@ export const Quiz = () => {
             submit={submit}
             prev={prevQuestions}
           />
-          <MiniPlayer />
+          <MiniPlayer id={id} title={qna[currentQuestion].title} />
         </>
       )}
     </>
