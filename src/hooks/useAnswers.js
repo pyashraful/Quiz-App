@@ -1,7 +1,7 @@
 import { get, getDatabase, orderByKey, query, ref } from "@firebase/database";
 import { useEffect, useState } from "react";
 
-export const useQuestions = (videoId) => {
+export const useAnswers = (videoId) => {
   const [answers, setAnswers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);

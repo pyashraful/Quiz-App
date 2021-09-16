@@ -92,7 +92,7 @@ export const Quiz = () => {
     });
   }
 
-  console.log(qna);
+  console.log(`qna is ${qna}`);
   return (
     <>
       {loading && <div>loading...</div>}
