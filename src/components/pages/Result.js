@@ -34,7 +34,7 @@ export const Result = () => {
     });
     return score;
   }
-
+  console.log(answers);
   const userScore = calculate();
   console.log(userScore);
 
@@ -45,7 +45,7 @@ export const Result = () => {
       {answers && answers.length > 0 && (
         <>
           <Summary score={userScore} noq={answers.length} />
-          <Analysis />
+          <Analysis answers={answers} />
         </>
       )}
     </>

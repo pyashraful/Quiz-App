@@ -103,6 +103,7 @@ export const Quiz = () => {
           <h4>Question can have multiple answers</h4>
           {console.log(qna[currentQuestion].options)}
           <Answeres
+            input
             options={qna[currentQuestion].options}
             handleChange={handleAnswerChange}
           />
